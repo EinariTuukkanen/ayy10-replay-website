@@ -1,0 +1,172 @@
+:root {
+  --blue: #c4e6ef;
+  --red: #d11615;
+  --white: #ffffff;
+}
+
+@font-face {
+  font-family: ValueRegular;
+  src: url('./fonts/value-regular.otf');
+}
+
+@font-face {
+  font-family: ValueBold;
+  src: url('./fonts/value-bold.otf');
+}
+
+@font-face {
+  font-family: ValueSerifBold;
+  src: url('./fonts/value-serif-bold.otf');
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: ValueRegular;
+  font-weight: 600;
+  font-size: 2rem;
+  color: var(--red);
+  background-color: var(--blue);
+}
+
+.page {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  /* grid-template-rows: 45% 40% auto; */
+  grid-template-areas:
+    'header    header'
+    'content   .';
+    /* '.   .'; */
+  width: 100%;
+  min-height: 450px;
+  background-color: var(--white);
+  border: 12px solid var(--red);
+  padding: 30px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 40% auto 50%;
+  grid-template-areas:
+    'tter . date'
+    'tter . place'
+    'tter . entry';
+  grid-area: content;
+}
+.tter-logo {
+  grid-area: tter;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+}
+.date {
+  grid-area: date;
+  align-self: flex-end;
+}
+.place {
+  grid-area: place;
+  align-self: center;
+}
+.entry {
+  grid-area: entry;
+}
+.header {
+  grid-area: header;
+}
+
+.header h1 {
+  font-family: ValueBold;
+  font-size: 8rem;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 2rem;
+  line-height: 6rem;
+  margin: 0;
+}
+
+.header h2 {
+  margin: 0;
+  text-align: center;
+  padding: 10px;
+  font-size: 2rem;
+}
+
+.grayscale-1 {
+  max-width: 100%;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+.grayscale-2 {
+  width: 50%;
+  z-index: -1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.grayscale-3 {
+  width: 50%;
+  z-index: -1;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+/* 
+@media only screen and (max-width: 1000px) {
+  .page {
+    width: 50%;
+  }
+} */
+
+@media only screen and (max-width: 768px) {
+  body {
+    font-size: 1.5rem;
+  }
+  .header h1 {
+    letter-spacing: 0;
+    font-size: 4rem;
+  }
+  .header h2 {
+    font-size: 1.5rem;
+  }
+  .page {
+    width: 95%;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-template-areas:
+      'header'
+      'content';
+    padding: 10px 5px;
+  }
+  .grayscale-2,
+  .grayscale-3 {
+    display: none;
+  }
+  .tter-logo {
+    align-self: center;
+  }
+  .content {
+    display: grid;
+    grid-template-columns: 40% auto;
+    grid-template-areas:
+      'tter date'
+      'tter place'
+      'tter entry';
+    grid-area: content;
+  }
+}
